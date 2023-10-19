@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,38 @@
     <link rel="stylesheet" href="./css/style.css">
     <title>Responsive Escaperoom</title>
 </head>
+
 <body>
+    <h1 class="visually-hidden">Responsive Escaperoom</h1>
+    <article class="article article--start">
+        <h2 class="article__title">before we start</h2>
+        <p class="artcile__hint">make sure to adjust the following settings before you start the game</p>
+        <ul class="article__list">
+            <li class="list__item">prefers-color-scheme: dark</li>
+            <li class="list__item">prefers-reduced-transparency: reduce</li>
+            <li class="list__item">width: 900</li>
+        </ul>
+        <a class="start__button" href="index.html#challenge1">start</a>
+    </article>
+    <article class="article article--challenge" id="challenge1">
+        <h2 class="article__title">Disolve the soap</h2>
+        <p class="artcile__hint">bring the water to the soap</p>
+        <div class="soap__bar">
+            <p class="soap__number">5</p>
+            <p class="soap__number">5</p>
+        </div>
+        <img class="water" src="./assets/img/water.svg" alt="water">
+    </article>
+    <article class="article article--code">
+        <form action="">
+            <input type="text" placeholder="0" pattern="5" required size="1">
+            <input type="text" placeholder="0" pattern="2" required size="1">
+            <input type="text" placeholder="0" pattern="3" required size="1">
+            <input type="text" placeholder="0" pattern="4" required size="1">
+            <button type="submit">open</button>
+        </form>
+    </article>
+
 </body>
+
 </html>
