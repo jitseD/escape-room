@@ -3,6 +3,7 @@
     --c-fgr: rgb(238, 238, 238);
     --c-grey: rgb(139, 139, 139);
     --c-blue: rgb(84, 98, 231);
+    --c-yellow: rgb(231, 187, 84);
 
     --s-xs: 0.5rem;
     --s: 1rem;
@@ -28,13 +29,13 @@ html {
 
 body {
     overflow: hidden;
-    height: 100vh;
+    block-size: 100vh;
 }
 
 .visually-hidden {
     position: absolute;
-    width: 1px;
-    height: 1px;
+    inline-size: 1px;
+    block-size: 1px;
     padding: 0;
     margin: -1px;
     overflow: hidden;
@@ -43,8 +44,8 @@ body {
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+    max-inline-size: 100%;
+    block-size: auto;
 }
 
 a {
@@ -80,13 +81,20 @@ a {
     display: none;
 }
 
-@media (prefers-color-scheme: dark) and (width: 900px) and (prefers-reduced-transparency: reduce) {
+@media (prefers-color-scheme: light) {
+    .start {
+        background-color: var(--c-fgr);
+        color: var(--c-bgr);
+    }
+}
+
+@media (prefers-color-scheme: dark) and (height: 900px) and (prefers-reduced-transparency: reduce) {
     .start__button {
         display: inline-block;
         background-color: var(--c-fgr);
         color: var(--c-bgr);
         padding: var(--s), var(--s-m);
-        border-radius: 1rem;
+        border-radius: var(--s);
         text-align: center;
     }
 
@@ -98,19 +106,19 @@ a {
 
 .challenge1 {
     display: grid;
-    grid-template-columns: 1rem repeat(3, 1fr) 1rem;
-    grid-template-rows: 1rem repeat(2, max-content) 1fr 1fr 1fr 1rem;
+    grid-template-columns: var(--s) repeat(3, 1fr) var(--s);
+    grid-template-rows: var(--s) repeat(2, min-content) 1fr 1fr 1fr var(--s);
     gap: var(--s);
 }
 
-.challenge1 .title {
+.title {
     grid-column: 2/-1;
     grid-row: 2;
     align-self: flex-end;
 }
 
-.challenge1 .hint1,
-.challenge1 .hint2 {
+.hint1,
+.hint2 {
     grid-column: 2/-1;
     grid-row: 3;
 }
@@ -129,8 +137,8 @@ a {
     grid-column: 1/-1;
     grid-row: 1/-1;
     justify-self: center;
-    width: 15rem;
-    height: 7.5rem;
+    inline-size: 15rem;
+    block-size: 7.5rem;
     background-color: var(--c-fgr);
     color: var(--c-blue);
     border-radius: 3.5rem;
@@ -155,19 +163,22 @@ a {
     block-size: 6rem;
 }
 
-.code__number {
+.challenge1 .code__number {
     grid-column: 1/-1;
     grid-row: 1/-1;
+    display: none;
+}
+
+.code__number {
     font-weight: 900;
     font-size: var(--f-l);
-    display: none;
 }
 
 .water {
     grid-column: 1/-1;
     grid-row: 1/-1;
     align-self: flex-end;
-    max-width: 111%;
+    max-inline-size: 111%;
     position: relative;
 }
 
@@ -175,7 +186,7 @@ a {
     position: absolute;
     bottom: 0;
     opacity: 50%;
-    max-width: 111%;
+    max-inline-size: 111%;
     animation: water 1s linear infinite;
 }
 
@@ -194,9 +205,10 @@ a {
     grid-row: 6;
     display: none;
     grid-template-columns: repeat(2, 1fr);
-    padding-inline: 1rem;
+    padding-inline: var(--s);
     inline-size: 100%;
     align-items: flex-end;
+    z-index: 20;
 }
 
 .prev,
@@ -226,7 +238,7 @@ a {
         background-color: unset;
     }
 
-    .code__number {
+    .challenge1 .code__number {
         display: block;
     }
 }
@@ -243,10 +255,52 @@ a {
     }
 }
 
+.challenge2 {
+    display: grid;
+    grid-template-columns: var(--s) 1fr var(--s);
+    grid-template-rows: var(--s) repeat(2, min-content) 1fr var(--s);
+    gap: var(--s);
+    position: relative;
+}
+
+
+.challenge2 .hint2 {
+    display: none;
+}
+
+.challenge2 .code__number {
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    place-self: center;
+    color: var(--c-bgr);
+}
 
 @media (prefers-color-scheme: light) {
-    :root {
-        --c-fgr: rgb(26, 26, 26);
-        --c-bgr: rgb(238, 238, 238);
+    .challenge2 .hint1 {
+        display: none;
+    }
+    
+    .challenge2 .hint2 {
+        display: block;
+    }
+    
+    .challenge2 .code__number {
+        filter: blur(var(--s-xs));
+        transition: filter 1s;
+    }
+
+    .challenge2::after {
+        content: '';
+        inline-size: var(--s-xl);
+        block-size: var(--s-xl);
+        filter: blur(var(--s-l));
+        background-color: var(--c-yellow);
+        border-radius: 50%;
+        top: 30%;
+        left: 30%;
+        transform-origin: center;
+        position: absolute;
+        z-index: -10;
     }
 }
+
