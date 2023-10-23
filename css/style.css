@@ -1,10 +1,13 @@
 :root {
     --c-bgr: rgb(26, 26, 26);
     --c-fgr: rgb(238, 238, 238);
+    --c-grey: rgb(139, 139, 139);
+    --c-blue: rgb(84, 98, 231);
 
     --s-xs: 0.5rem;
     --s: 1rem;
     --s-m: 2rem;
+    --s-l: 5rem;
     --s-xl: 15rem;
 
     --f-l: 3rem;
@@ -24,7 +27,8 @@ html {
 }
 
 body {
-    overflow-y: hidden;
+    overflow: hidden;
+    height: 100vh;
 }
 
 .visually-hidden {
@@ -48,11 +52,7 @@ a {
     color: var(--c-fgr);
 }
 
-article {
-    height: 100vh;
-}
-
-.article--start {
+.start {
     display: grid;
     place-items: center;
     grid-template-rows: repeat(5, max-content);
@@ -60,13 +60,13 @@ article {
     padding-block: var(--s-xl);
 }
 
-.article__title{
+.title {
     text-transform: uppercase;
     font-size: var(--f-l);
     font-weight: 900;
 }
 
-.article__list{
+.list {
     display: flex;
     flex-direction: column;
     gap: var(--s-xs);
@@ -88,5 +88,165 @@ article {
         padding: var(--s), var(--s-m);
         border-radius: 1rem;
         text-align: center;
+    }
+
+    .start__button:hover {
+        background-color: var(--c-blue);
+        color: var(--c-fgr);
+    }
+}
+
+.challenge1 {
+    display: grid;
+    grid-template-columns: 1rem repeat(3, 1fr) 1rem;
+    grid-template-rows: 1rem repeat(2, max-content) 1fr 1fr 1fr 1rem;
+    gap: var(--s);
+}
+
+.challenge1 .title {
+    grid-column: 2/-1;
+    grid-row: 2;
+    align-self: flex-end;
+}
+
+.challenge1 .hint1,
+.challenge1 .hint2 {
+    grid-column: 2/-1;
+    grid-row: 3;
+}
+
+.challenge1 .hint2 {
+    display: none;
+}
+
+.hint>p:last-child {
+    margin-block-start: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--c-grey);
+}
+
+.soap__bar {
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    justify-self: center;
+    width: 15rem;
+    height: 7.5rem;
+    background-color: var(--c-fgr);
+    color: var(--c-blue);
+    border-radius: 3.5rem;
+    display: grid;
+    place-items: center;
+    margin-block-start: 15rem;
+}
+
+.soap__bar::after {
+    content: "soap";
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    display: grid;
+    place-items: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 2rem;
+    color: var(--c-grey);
+    border-radius: 3.5rem;
+    border: 0.2rem solid var(--c-grey);
+    inline-size: 13rem;
+    block-size: 6rem;
+}
+
+.code__number {
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    font-weight: 900;
+    font-size: var(--f-l);
+    display: none;
+}
+
+.water {
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    align-self: flex-end;
+    max-width: 111%;
+    position: relative;
+}
+
+.water__image {
+    position: absolute;
+    bottom: 0;
+    opacity: 50%;
+    max-width: 111%;
+    animation: water 1s linear infinite;
+}
+
+@keyframes water {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: -11%;
+    }
+}
+
+.nav {
+    grid-column: 2/-2;
+    grid-row: 6;
+    display: none;
+    grid-template-columns: repeat(2, 1fr);
+    padding-inline: 1rem;
+    inline-size: 100%;
+    align-items: flex-end;
+}
+
+.prev,
+.next {
+    text-decoration: underline;
+}
+
+.next {
+    grid-column: 2;
+    justify-self: flex-end;
+}
+
+@media (max-height: 31rem) {
+    .challenge1 .hint2 {
+        display: block;
+    }
+
+    .challenge1 .hint1 {
+        display: none;
+    }
+
+    .soap__bar::after {
+        display: none;
+    }
+
+    .soap__bar {
+        background-color: unset;
+    }
+
+    .code__number {
+        display: block;
+    }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+    .water__image {
+        opacity: 100%;
+    }
+}
+
+@media (max-height: 31rem) and (prefers-reduced-transparency: no-preference) {
+    .challenge1 .nav {
+        display: grid;
+    }
+}
+
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --c-fgr: rgb(26, 26, 26);
+        --c-bgr: rgb(238, 238, 238);
     }
 }
