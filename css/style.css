@@ -6,9 +6,10 @@
     --c-yellow: rgb(231, 187, 84);
 
     --s-xs: 0.5rem;
+    --s-s: 0.6rem;
     --s: 1rem;
     --s-m: 2rem;
-    --s-l: 5rem;
+    --s-l: 10rem;
     --s-xl: 15rem;
 
     --f-l: 3rem;
@@ -67,6 +68,10 @@ a {
     font-weight: 900;
 }
 
+.start .title {
+    grid-row: 1;
+}
+
 .list {
     display: flex;
     flex-direction: column;
@@ -88,7 +93,7 @@ a {
     }
 }
 
-@media (prefers-color-scheme: dark) and (height: 900px) and (prefers-reduced-transparency: reduce) {
+@media (prefers-color-scheme: dark) and (width: 900px) and (prefers-reduced-transparency: reduce) {
     .start__button {
         display: inline-block;
         background-color: var(--c-fgr);
@@ -202,7 +207,6 @@ a {
 
 .nav {
     grid-column: 2/-2;
-    grid-row: 6;
     display: none;
     grid-template-columns: repeat(2, 1fr);
     padding-inline: var(--s);
@@ -252,6 +256,7 @@ a {
 @media (max-height: 31rem) and (prefers-reduced-transparency: no-preference) {
     .challenge1 .nav {
         display: grid;
+        grid-row: 6;
     }
 }
 
@@ -271,36 +276,105 @@ a {
 .challenge2 .code__number {
     grid-column: 1/-1;
     grid-row: 1/-1;
-    place-self: center;
     color: var(--c-bgr);
+    margin-inline-start: 30rem;
+    margin-block-start: 15rem;
 }
 
 @media (prefers-color-scheme: light) {
     .challenge2 .hint1 {
         display: none;
     }
-    
+
     .challenge2 .hint2 {
         display: block;
     }
-    
+
     .challenge2 .code__number {
-        filter: blur(var(--s-xs));
-        transition: filter 1s;
+        filter: blur(var(--s-s));
     }
 
     .challenge2::after {
         content: '';
         inline-size: var(--s-xl);
         block-size: var(--s-xl);
-        filter: blur(var(--s-l));
+        filter: blur(var(--s-m));
         background-color: var(--c-yellow);
         border-radius: 50%;
-        top: 30%;
-        left: 30%;
-        transform-origin: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         position: absolute;
         z-index: -10;
+        animation: flashlight 0.5s linear infinite
+    }
+
+    @keyframes flashlight {
+
+        0%,
+        100% {
+            top: 90%;
+            left: 40%;
+        }
+
+        10% {
+            top: 60%;
+            left: 10%;
+        }
+
+        20% {
+            top: 30%;
+            left: 30%;
+        }
+
+        30% {
+            top: 10%;
+            left: 50%;
+        }
+
+        40% {
+            top: 30%;
+            left: 80%;
+        }
+
+        50% {
+            top: 60%;
+            left: 60%;
+        }
+
+        60% {
+            top: 90%;
+            left: 80%;
+        }
+
+        70% {
+            top: 70%;
+            left: 50%;
+        }
+
+        80% {
+            top: 40%;
+            left: 30%;
+        }
+
+        90% {
+            top: 70%;
+            left: 50%;
+        }
     }
 }
 
+@media(prefers-reduced-motion: reduce) {
+    .challenge2::after {
+        animation-duration: 3s;
+    }
+
+    .challenge2 .code__number {
+        filter: unset;
+    }
+
+    .challenge2 .nav {
+        display: grid;
+            grid-row: 4;
+    }
+}
