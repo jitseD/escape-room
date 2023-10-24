@@ -2,17 +2,21 @@
     --c-bgr: rgb(26, 26, 26);
     --c-fgr: rgb(238, 238, 238);
     --c-grey: rgb(139, 139, 139);
+    --c-green: rgb(111, 231, 84);
     --c-blue: rgb(84, 98, 231);
     --c-yellow: rgb(231, 187, 84);
 
-    --s-xs: 0.5rem;
-    --s-s: 0.6rem;
-    --s: 1rem;
-    --s-m: 2rem;
-    --s-l: 10rem;
-    --s-xl: 15rem;
+    --s-xs: clamp(0.5rem, 0.46rem + 0.1639vw, 0.5625rem);
+    --s-s: clamp(0.9375rem, 0.8176rem + 0.4918vw, 1.125rem);
+    --s: clamp(1.4375rem, 1.3176rem + 0.4918vw, 1.625rem);
+    --s-m: clamp(2.8125rem, 2.4928rem + 1.3115vw, 3.3125rem);
+    --s-l: clamp(7.5rem, 6.7008rem + 3.2787vw, 8.75rem);
+    --s-xl: clamp(11.25rem, 10.0512rem + 4.918vw, 13.125rem);
 
-    --f-l: 3rem;
+    --f-s: clamp(0.9375rem, 0.8975rem + 0.1639vw, 1rem);
+    --f: clamp(1.125rem, 1.0451rem + 0.3279vw, 1.25rem);
+    --f-m: clamp(1.62rem, 1.407rem + 0.8738vw, 1.9531rem);
+    --f-l: clamp(2.3325rem, 1.8726rem + 1.8869vw, 3.0519rem);
 }
 
 html {
@@ -31,6 +35,7 @@ html {
 body {
     overflow: hidden;
     block-size: 100vh;
+    font-size: var(--f);
 }
 
 .visually-hidden {
@@ -54,6 +59,9 @@ a {
     color: var(--c-fgr);
 }
 
+
+/* --- start screen --- */
+
 .start {
     display: grid;
     place-items: center;
@@ -62,7 +70,7 @@ a {
     padding-block: var(--s-xl);
 }
 
-.title {
+h1 {
     text-transform: uppercase;
     font-size: var(--f-l);
     font-weight: 900;
@@ -93,7 +101,7 @@ a {
     }
 }
 
-@media (prefers-color-scheme: dark) and (width: 900px) and (prefers-reduced-transparency: reduce) {
+@media (prefers-color-scheme: dark) and (width: 900px) and (color-gamut: srgb) {
     .start__button {
         display: inline-block;
         background-color: var(--c-fgr);
@@ -109,23 +117,30 @@ a {
     }
 }
 
-.challenge1 {
+
+/* --- challenge 1 */
+
+.challenge {
     display: grid;
-    grid-template-columns: var(--s) repeat(3, 1fr) var(--s);
-    grid-template-rows: var(--s) repeat(2, min-content) 1fr 1fr 1fr var(--s);
+    grid-template-columns: var(--s) 1fr var(--s);
+    grid-template-rows: var(--s)min-content 1fr var(--s);
     gap: var(--s);
 }
 
-.title {
-    grid-column: 2/-1;
-    grid-row: 2;
-    align-self: flex-end;
+.challenge1 {
+    grid-template-columns: var(--s) repeat(3, 1fr) var(--s);
+    grid-template-rows: var(--s) min-content 1fr 1fr 1fr var(--s);
+    position: relative;
 }
 
 .hint1,
 .hint2 {
     grid-column: 2/-1;
-    grid-row: 3;
+    grid-row: 2;
+}
+
+.hint h1 {
+    padding-block-end: var(--s);
 }
 
 .challenge1 .hint2 {
@@ -133,8 +148,8 @@ a {
 }
 
 .hint>p:last-child {
-    margin-block-start: 0.5rem;
-    font-size: 0.8rem;
+    margin-block-start: var(--s-xs);
+    font-size: var(--f-s);
     color: var(--c-grey);
 }
 
@@ -145,7 +160,6 @@ a {
     inline-size: 15rem;
     block-size: 7.5rem;
     background-color: var(--c-fgr);
-    color: var(--c-blue);
     border-radius: 3.5rem;
     display: grid;
     place-items: center;
@@ -160,7 +174,7 @@ a {
     place-items: center;
     text-transform: uppercase;
     font-weight: 900;
-    font-size: 2rem;
+    font-size: var(--f-m);
     color: var(--c-grey);
     border-radius: 3.5rem;
     border: 0.2rem solid var(--c-grey);
@@ -171,10 +185,12 @@ a {
 .challenge1 .code__number {
     grid-column: 1/-1;
     grid-row: 1/-1;
-    display: none;
+    z-index: 10;
+    color: var(--c-green);
 }
 
 .code__number {
+    display: none;
     font-weight: 900;
     font-size: var(--f-l);
 }
@@ -183,14 +199,9 @@ a {
     grid-column: 1/-1;
     grid-row: 1/-1;
     align-self: flex-end;
-    max-inline-size: 111%;
-    position: relative;
-}
-
-.water__image {
+    fill: var(--c-green);
     position: absolute;
     bottom: 0;
-    opacity: 50%;
     max-inline-size: 111%;
     animation: water 1s linear infinite;
 }
@@ -225,7 +236,7 @@ a {
     justify-self: flex-end;
 }
 
-@media (max-height: 31rem) {
+@media (max-height: 29rem) {
     .challenge1 .hint2 {
         display: block;
     }
@@ -247,27 +258,39 @@ a {
     }
 }
 
-@media (prefers-reduced-transparency: reduce) {
-    .water__image {
-        opacity: 100%;
+@media (color-gamut: p3) {
+    .water {
+        fill: var(--c-yellow);
+    }
+
+    .challenge1 .code__number {
+        color: var(--c-yellow);
     }
 }
 
-@media (max-height: 31rem) and (prefers-reduced-transparency: no-preference) {
+@media (color-gamut: rec2020) {
+    .water {
+        fill: var(--c-blue);
+    }
+
+    .challenge1 .code__number {
+        color: var(--c-green);
+    }
+}
+
+@media (max-height: 29rem) and (color-gamut: rec2020) {
     .challenge1 .nav {
         display: grid;
-        grid-row: 6;
+        grid-row: 5;
     }
 }
 
+
+/* --- challenge 2 --- */
+
 .challenge2 {
-    display: grid;
-    grid-template-columns: var(--s) 1fr var(--s);
-    grid-template-rows: var(--s) repeat(2, min-content) 1fr var(--s);
-    gap: var(--s);
     position: relative;
 }
-
 
 .challenge2 .hint2 {
     display: none;
@@ -292,6 +315,7 @@ a {
 
     .challenge2 .code__number {
         filter: blur(var(--s-s));
+        display: block;
     }
 
     .challenge2::after {
@@ -375,6 +399,95 @@ a {
 
     .challenge2 .nav {
         display: grid;
-            grid-row: 4;
+        grid-row: 3;
+    }
+}
+
+
+/* --- challenge 3 --- */
+
+/* .challenge3 {} */
+
+@media (width: 375px) and (height: 667px) {
+    .challenge3 .hint1 {
+        display: none;
+    }
+
+    .challenge3 .hint2 {
+        grid-column: 2;
+        display: grid;
+        gap: var(--s);
+    }
+
+    .challenge3 .hint2 h1::before {
+        content: url(../assets/img/user.svg);
+        inline-size: 35px;
+        block-size: 35px;
+    }
+
+    .challenge3 .hint2 h1 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: var(--s-s);
+        text-transform: unset;
+        font-size: var(--f-m);
+        border-bottom: var(--c-fgr) solid 0.05rem;
+        margin-inline: calc(0 - var(--s));
+    }
+
+    .challenge3 .hint2 p {
+        font-size: var(--f-s);
+        max-inline-size: 13rem;
+        border-radius: 10px;
+    }
+
+    .challenge3 .hint2 p:last-child {
+        margin-block-start: unset;
+    }
+
+    .challenge3 .hint2 p span {
+        padding: var(--s-xs);
+        border-radius: var(--s-s);
+    }
+
+    .challenge3 .hint2 p:nth-child(2n) {
+        color: var(--c-bgr);
+        display: grid;
+        grid-template-columns: 1.5rem auto;
+        gap: var(--s-xs);
+        align-items: center;
+    }
+
+    .challenge3 .hint2 p:nth-child(2n) span {
+        background-color: var(--c-fgr);
+        padding-inline: var(--s-s) var(--s-xs);
+    }
+
+    .challenge3 .hint2 p:nth-child(2n)::before {
+        content: "";
+        background-image: url(../assets/img/user.svg);
+        background-size: cover;
+        inline-size: 1.5rem;
+        block-size: 1.5rem;
+    }
+
+    .challenge3 .hint2 p:nth-child(2n+1) {
+        justify-self: flex-end;
+    }
+
+    .challenge3 .hint2 p:nth-child(2n+1) span {
+        background-color: var(--c-blue);
+        padding-inline: var(--s-xs) var(--s-s);
+    }
+}
+
+@media print {
+    .challenge3 .code__number {
+        display: block;
+        grid-column: 1/-1;
+        grid-row: 1/-1;
+        place-self: center;
+        font-size: 50rem;
     }
 }
