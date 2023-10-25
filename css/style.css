@@ -6,6 +6,13 @@
     --c-blue: rgb(84, 98, 231);
     --c-yellow: rgb(231, 187, 84);
 
+    --c1: #f5ab47;
+    --c2: #cc6935;
+    --c3: #31784b;
+    --c4: #7ea285;
+    --c5: #8e8535;
+    --c6: #b9a73d;
+
     --s-xs: clamp(0.5rem, 0.46rem + 0.1639vw, 0.5625rem);
     --s-s: clamp(0.9375rem, 0.8176rem + 0.4918vw, 1.125rem);
     --s: clamp(1.4375rem, 1.3176rem + 0.4918vw, 1.625rem);
@@ -410,7 +417,7 @@ h1 {
 
 /* .challenge3 {} */
 
-.iphone__back{
+.iphone__back {
     grid-column: 2;
     grid-row: 1/-1;
     inline-size: 15rem;
@@ -485,7 +492,7 @@ h1 {
         padding: var(--s-xs);
         border-radius: var(--s-s);
     }
-    
+
     .text__message:nth-child(2n) {
         color: var(--c-bgr);
         display: grid;
@@ -493,8 +500,8 @@ h1 {
         gap: var(--s-xs);
         align-items: center;
     }
-    
-    .text__message:last-child span{
+
+    .text__message:last-child span {
         color: var(--c-bgr);
     }
 
@@ -519,6 +526,13 @@ h1 {
         background-color: var(--c-blue);
         padding-inline: var(--s-xs) var(--s-s);
     }
+
+    .challenge3 .nav {
+        display: grid;
+        grid-row: 3;
+        padding-block-end: var(--s-m);
+        padding-inline: 0rem;
+    }
 }
 
 @media print {
@@ -528,5 +542,42 @@ h1 {
         grid-row: 1/-1;
         place-self: center;
         font-size: 50rem;
+    }
+
+    .challenge3 .hint,
+    .iphone__back {
+        display: none;
+    }
+}
+
+
+/* --- challenge 4 --- */
+
+@media (min-resolution: 3dppx) {
+}
+
+.c1, .c3, .c5 {
+    fill: var(--c1);
+}
+
+.c2, .c4, .c6 {
+    fill: var(--c2);
+}
+
+@media (prefers-contrast: more) {
+    .c3 {
+        fill: var(--c3);
+    }
+    
+    .c4 {
+        fill: var(--c4);
+    }
+    
+    .c5 {
+        fill: var(--c5);
+    }
+    
+    .c6 {
+        fill: var(--c6);
     }
 }
