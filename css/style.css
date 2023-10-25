@@ -123,7 +123,7 @@ h1 {
 .challenge {
     display: grid;
     grid-template-columns: var(--s) 1fr var(--s);
-    grid-template-rows: var(--s)min-content 1fr var(--s);
+    grid-template-rows: var(--s) min-content 1fr var(--s);
     gap: var(--s);
 }
 
@@ -187,6 +187,7 @@ h1 {
     grid-row: 1/-1;
     z-index: 10;
     color: var(--c-green);
+    transition: color 0.5s linear;
 }
 
 .code__number {
@@ -203,6 +204,7 @@ h1 {
     position: absolute;
     bottom: 0;
     max-inline-size: 111%;
+    transition: fill 0.5s linear;
     animation: water 1s linear infinite;
 }
 
@@ -408,19 +410,48 @@ h1 {
 
 /* .challenge3 {} */
 
-.challenge3 .hint2{
+.iphone__back{
+    grid-column: 2;
+    grid-row: 1/-1;
+    inline-size: 15rem;
+    rotate: -34deg;
+    place-self: flex-end;
+    z-index: -10;
+    transform: center;
+    padding: 0rem var(--s-m) var(--s-m) 0rem;
+}
+
+.challenge3 .hint2,
+.iphone__screen {
     display: none;
 }
 
 @media (width: 375px) and (height: 667px) {
-    .challenge3 .hint1 {
+
+    .challenge3 .hint1,
+    .iphone__back {
         display: none;
+    }
+
+    .challenge3 {
+        position: relative;
+    }
+
+    .iphone__screen {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        inline-size: 100vw;
+        block-size: 100vh;
+        z-index: -10;
     }
 
     .challenge3 .hint2 {
         grid-column: 2;
         display: grid;
         gap: var(--s);
+        padding-block-start: 4rem;
     }
 
     .text__title::before {
@@ -454,13 +485,17 @@ h1 {
         padding: var(--s-xs);
         border-radius: var(--s-s);
     }
-
+    
     .text__message:nth-child(2n) {
         color: var(--c-bgr);
         display: grid;
         grid-template-columns: 1.5rem auto;
         gap: var(--s-xs);
         align-items: center;
+    }
+    
+    .text__message:last-child span{
+        color: var(--c-bgr);
     }
 
     .text__message:nth-child(2n) span {
