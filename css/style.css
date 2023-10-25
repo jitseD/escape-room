@@ -408,6 +408,10 @@ h1 {
 
 /* .challenge3 {} */
 
+.challenge3 .hint2{
+    display: none;
+}
+
 @media (width: 375px) and (height: 667px) {
     .challenge3 .hint1 {
         display: none;
@@ -419,13 +423,13 @@ h1 {
         gap: var(--s);
     }
 
-    .challenge3 .hint2 h1::before {
+    .text__title::before {
         content: url(../assets/img/user.svg);
         inline-size: 35px;
         block-size: 35px;
     }
 
-    .challenge3 .hint2 h1 {
+    .text__title {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -436,22 +440,22 @@ h1 {
         margin-inline: calc(0 - var(--s));
     }
 
-    .challenge3 .hint2 p {
+    .text__message {
         font-size: var(--f-s);
         max-inline-size: 13rem;
         border-radius: 10px;
     }
 
-    .challenge3 .hint2 p:last-child {
+    .text__message:last-child {
         margin-block-start: unset;
     }
 
-    .challenge3 .hint2 p span {
+    .text__message span {
         padding: var(--s-xs);
         border-radius: var(--s-s);
     }
 
-    .challenge3 .hint2 p:nth-child(2n) {
+    .text__message:nth-child(2n) {
         color: var(--c-bgr);
         display: grid;
         grid-template-columns: 1.5rem auto;
@@ -459,12 +463,12 @@ h1 {
         align-items: center;
     }
 
-    .challenge3 .hint2 p:nth-child(2n) span {
+    .text__message:nth-child(2n) span {
         background-color: var(--c-fgr);
         padding-inline: var(--s-s) var(--s-xs);
     }
 
-    .challenge3 .hint2 p:nth-child(2n)::before {
+    .text__message:nth-child(2n)::before {
         content: "";
         background-image: url(../assets/img/user.svg);
         background-size: cover;
@@ -472,11 +476,11 @@ h1 {
         block-size: 1.5rem;
     }
 
-    .challenge3 .hint2 p:nth-child(2n+1) {
+    .text__message:nth-child(2n+1) {
         justify-self: flex-end;
     }
 
-    .challenge3 .hint2 p:nth-child(2n+1) span {
+    .text__message:nth-child(2n+1) span {
         background-color: var(--c-blue);
         padding-inline: var(--s-xs) var(--s-s);
     }
