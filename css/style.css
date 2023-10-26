@@ -553,6 +553,10 @@ h1 {
 
 /* --- challenge 4 --- */
 
+.color__blind{
+    inline-size: 20rem;
+}
+
 @media (min-resolution: 3dppx) {
 }
 
