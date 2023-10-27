@@ -300,10 +300,11 @@ h1 {
 
     .challenge2::after {
         content: '';
-        inline-size: var(--s-xl);
-        block-size: var(--s-xl);
-        filter: blur(var(--s-m));
-        background-color: var(--c-yellow);
+        inline-size: 15rem;
+        block-size: 15rem;
+        background-image: url(../assets/img/flashlight.png);
+        background-size: cover;
+        opacity: 80%;
         border-radius: 50%;
         top: 50%;
         left: 50%;
@@ -376,53 +377,51 @@ h1 {
     .challenge2 .code__number {
         filter: unset;
     }
+}
 
+@media (prefers-color-scheme: light) and (prefers-reduced-motion: reduce) {
     .challenge2 .nav {
         display: grid;
         grid-row: 3;
     }
 }
 
-
 /* --- challenge 3 --- */
 
-/* .challenge3 {} */
 
-.iphone__back {
+.challenge3{
+    background-image: url(../assets/img/desk.png);
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.iphone {
     grid-column: 2;
     grid-row: 1/-1;
-    inline-size: 15rem;
-    rotate: -34deg;
-    place-self: flex-end;
-    z-index: -10;
+    inline-size: 10rem;
+    rotate: 15deg;
+    align-self: flex-end;
+    justify-self: center;
     transform: center;
     padding: 0rem var(--s-m) var(--s-m) 0rem;
 }
 
-.challenge3 .hint2,
-.iphone__screen {
+.challenge3 .hint2{
     display: none;
 }
 
 @media (width: 375px) and (height: 667px) {
-
     .challenge3 .hint1,
-    .iphone__back {
+    .iphone {
         display: none;
     }
 
     .challenge3 {
         position: relative;
-    }
-
-    .iphone__screen {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        inline-size: 100vw;
-        block-size: 100vh;
-        z-index: -10;
+        background-color: rgb(40, 40, 40);
+        background-image: url(../assets/img/iphone.png);
+        background-size: 100vw 100vh;
     }
 
     .challenge3 .hint2 {
@@ -501,7 +500,7 @@ h1 {
     .challenge3 .nav {
         display: grid;
         grid-row: 3;
-        padding-block-end: var(--s-m);
+        padding-block-end: calc(var(--s-m) + var(--s-s));
         padding-inline: 0rem;
     }
 }
@@ -516,7 +515,7 @@ h1 {
     }
 
     .challenge3 .hint,
-    .iphone__back {
+    .iphone {
         display: none;
     }
 }
