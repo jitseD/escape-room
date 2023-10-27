@@ -563,15 +563,16 @@ h1 {
 
 /* --- challenge 4 --- */
 
-.hint2 {
+.challenge4 .hint2 {
     display: none;
 }
 
 .colorblind {
     grid-column: 2;
-    grid-row: 3;
-    place-self: center;
-    max-inline-size: 70vw;
+    grid-row: 2/4;
+    align-self: flex-end;
+    justify-self: center;
+    max-inline-size: 50vw;
     max-block-size: 50vh;
     filter: blur(0.8rem);
     transition: filter 0.5s linear;
