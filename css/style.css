@@ -1,8 +1,10 @@
+
 :root {
     --c-bgr: rgb(26, 26, 26);
     --c-fgr: rgb(238, 238, 238);
     --c-grey: rgb(139, 139, 139);
     --c-green: rgb(111, 231, 84);
+    --c-cyan: rgb(84, 231, 187);
     --c-blue: rgb(84, 98, 231);
     --c-yellow: rgb(231, 187, 84);
 
@@ -97,9 +99,6 @@ h1 {
     list-style: circle;
 }
 
-.start__button {
-    display: none;
-}
 
 @media (prefers-color-scheme: light) {
     .start {
@@ -108,19 +107,32 @@ h1 {
     }
 }
 
-@media (prefers-color-scheme: dark) and (width: 900px) and (color-gamut: srgb) {
+@media (color-gamut: srgb) and (prefers-color-scheme: dark) and (width: 900px) {
     .start__button {
-        display: inline-block;
+        display: block;
+        /* place-items: center; */
         background-color: var(--c-fgr);
-        color: var(--c-bgr);
-        padding: var(--s), var(--s-m);
+        padding: var(--s-s) var(--s-m);
         border-radius: var(--s);
-        text-align: center;
+        color: var(--c-bgr);
+
     }
 
     .start__button:hover {
         background-color: var(--c-blue);
         color: var(--c-fgr);
+    }
+}
+
+@media (color-gamut: p3) {
+    .start__button {
+        display: none;
+    }
+}
+
+@media (color-gamut: rect2020) {
+    .start__button {
+        display: none;
     }
 }
 
@@ -269,11 +281,11 @@ h1 {
 
 @media (color-gamut: p3) {
     .water {
-        fill: var(--c-yellow);
+        fill: var(--c-cyan);
     }
 
     .challenge1 .code__number {
-        color: var(--c-yellow);
+        color: var(--c-cyan);
     }
 }
 
@@ -553,14 +565,43 @@ h1 {
 
 /* --- challenge 4 --- */
 
-@media (min-resolution: 3dppx) {
+.hint2 {
+    display: none;
 }
 
-.c1, .c3, .c5 {
+.colorblind {
+    grid-column: 2;
+    grid-row: 3;
+    place-self: center;
+    max-inline-size: 80vw;
+    max-block-size: 50vh;
+    filter: blur(0.8rem);
+    transition: filter 0.5s linear;
+}
+
+@media (min-resolution: 3dppx) {
+    .colorblind {
+        filter: unset;
+    }
+
+    .hint1 {
+        display: none;
+    }
+    
+    .hint2 {
+        display: block;
+    }
+}
+
+.c1,
+.c3,
+.c5 {
     fill: var(--c1);
 }
 
-.c2, .c4, .c6 {
+.c2,
+.c4,
+.c6 {
     fill: var(--c2);
 }
 
@@ -568,16 +609,21 @@ h1 {
     .c3 {
         fill: var(--c3);
     }
-    
+
     .c4 {
         fill: var(--c4);
     }
-    
+
     .c5 {
         fill: var(--c5);
     }
-    
+
     .c6 {
         fill: var(--c6);
+    }
+
+    .challenge4 .nav{
+        display: grid;
+        grid-row: 3;
     }
 }
