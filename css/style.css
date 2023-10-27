@@ -136,7 +136,7 @@ h1 {
 }
 
 
-/* --- challenge 1 */
+/* --- challenge 1 --- */
 
 .challenge {
     display: grid;
@@ -146,19 +146,29 @@ h1 {
 }
 
 .challenge1 {
-    grid-template-columns: var(--s) repeat(3, 1fr) var(--s);
-    grid-template-rows: var(--s) min-content 1fr 1fr 1fr var(--s);
+    /* grid-template-columns: var(--s) 1fr var(--s);
+    grid-template-rows: var(--s) min-content 1fr var(--s); */
     position: relative;
+
+    background-image: url("../assets/img/shower-floor.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .hint1,
 .hint2 {
     grid-column: 2/-1;
     grid-row: 2;
+    z-index: 20;
 }
 
 .hint h1 {
     padding-block-end: var(--s);
+}
+
+.challenge1 .hint1,
+.challenge1 .hint2 {
+    color: var(--c-bgr);
 }
 
 .challenge1 .hint2 {
@@ -171,7 +181,7 @@ h1 {
     color: var(--c-grey);
 }
 
-.soap__bar {
+/* .soap__bar {
     grid-column: 1/-1;
     grid-row: 1/-1;
     justify-self: center;
@@ -182,9 +192,9 @@ h1 {
     display: grid;
     place-items: center;
     margin-block-start: 15rem;
-}
+} */
 
-.soap__bar::after {
+/* .soap__bar::after {
     content: "soap";
     grid-column: 1/-1;
     grid-row: 1/-1;
@@ -198,14 +208,23 @@ h1 {
     border: 0.2rem solid var(--c-grey);
     inline-size: 13rem;
     block-size: 6rem;
-}
+} */
 
-.challenge1 .code__number {
+/* .challenge1 .code__number {
     grid-column: 1/-1;
     grid-row: 1/-1;
     z-index: 10;
     color: var(--c-green);
-    transition: color 0.5s linear;
+    transition: color 0.5s ease-in;
+} */
+
+.soap {
+    max-inline-size: var(--s-xl);
+    grid-column: 2;
+    grid-row: 1/-1;
+    justify-self: center;
+    margin-block-start: var(--s-xl);
+    position: absolute;
 }
 
 .code__number {
@@ -215,26 +234,29 @@ h1 {
 }
 
 .water {
-    grid-column: 1/-1;
-    grid-row: 1/-1;
+    /* grid-column: 1/-1;
+    grid-row: 1/-1; */
+    opacity: 100%;
     align-self: flex-end;
-    fill: var(--c-green);
+    /* fill: var(--c-green); */
     position: absolute;
-    bottom: 0;
-    max-inline-size: 111%;
-    transition: fill 0.5s linear;
-    animation: water 1s linear infinite;
+    bottom: -5rem;
+    transform: scaleY(80%);
+    filter: hue-rotate(-50deg);
+    transition: filter 0.5s ease-in, opacity 2s ease-in 1s;
+    /* transition: fill 0.5s ease-in; */
+    /* animation: water 1s ease-in infinite; */
 }
 
-@keyframes water {
+/* @keyframes water {
     from {
         left: 0;
     }
-
+    
     to {
         left: -11%;
     }
-}
+} */
 
 .nav {
     grid-column: 2/-2;
@@ -255,7 +277,7 @@ h1 {
     justify-self: flex-end;
 }
 
-@media (max-height: 29rem) {
+@media (max-height: 27rem) {
     .challenge1 .hint2 {
         display: block;
     }
@@ -264,13 +286,17 @@ h1 {
         display: none;
     }
 
-    .soap__bar::after {
+    /* .soap__bar::after {
+        display: none;
+    } */
+
+    .soap {
         display: none;
     }
 
-    .soap__bar {
+    /* .soap__bar {
         background-color: unset;
-    }
+    } */
 
     .challenge1 .code__number {
         display: block;
@@ -279,17 +305,20 @@ h1 {
 
 @media (color-gamut: p3) {
     .water {
-        fill: var(--c-cyan);
+        filter: hue-rotate(-20deg);
+        /* fill: var(--c-cyan); */
     }
 
-    .challenge1 .code__number {
+    /* .challenge1 .code__number {
         color: var(--c-cyan);
-    }
+    } */
 }
 
 @media (color-gamut: rec2020) {
     .water {
-        fill: var(--c-blue);
+        filter: hue-rotate(20deg);
+        opacity: 50%;
+        /* fill: var(--c-blue); */
     }
 
     .challenge1 .code__number {
@@ -297,10 +326,10 @@ h1 {
     }
 }
 
-@media (max-height: 29rem) and (color-gamut: rec2020) {
+@media (max-height: 27rem) and (color-gamut: rec2020) {
     .challenge1 .nav {
         display: grid;
-        grid-row: 5;
+        grid-row: 3;
     }
 }
 
@@ -349,7 +378,7 @@ h1 {
         transform: translate(-50%, -50%);
         position: absolute;
         z-index: -10;
-        animation: flashlight 0.5s linear infinite
+        animation: flashlight 0.5s ease-in infinite
     }
 
     @keyframes flashlight {
@@ -575,7 +604,7 @@ h1 {
     max-inline-size: 50vw;
     max-block-size: 50vh;
     filter: blur(0.8rem);
-    transition: filter 0.5s linear;
+    transition: filter 0.5s ease-in;
 }
 
 .challenge4 .hint2 {
