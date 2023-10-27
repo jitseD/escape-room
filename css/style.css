@@ -1,6 +1,6 @@
 :root {
-    --c-bgr: rgb(26, 26, 26);
-    --c-fgr: rgb(238, 238, 238);
+    --c-black: rgb(26, 26, 26);
+    --c-white: rgb(238, 238, 238);
     --c-grey: rgb(139, 139, 139);
     --c-red: rgb(231, 84, 84);
     --c-yellow: rgb(231, 187, 84);
@@ -26,12 +26,13 @@
     --f: clamp(1.125rem, 1.0451rem + 0.3279vw, 1.25rem);
     --f-m: clamp(1.62rem, 1.407rem + 0.8738vw, 1.9531rem);
     --f-l: clamp(2.3325rem, 1.8726rem + 1.8869vw, 3.0519rem);
+    --f-xl: clamp(4.6656rem, 3.6348rem + 5.1543vw, 7.6294rem);
 }
 
 html {
     box-sizing: border-box;
-    background-color: var(--c-bgr);
-    color: var(--c-fgr);
+    background-color: var(--c-black);
+    color: var(--c-white);
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -65,7 +66,7 @@ img {
 
 a {
     text-decoration: none;
-    color: var(--c-fgr);
+    color: var(--c-white);
 }
 
 
@@ -102,24 +103,24 @@ h1 {
 
 @media (prefers-color-scheme: light) {
     .start {
-        background-color: var(--c-fgr);
-        color: var(--c-bgr);
+        background-color: var(--c-white);
+        color: var(--c-black);
     }
 }
 
 @media (color-gamut: srgb) and (prefers-color-scheme: dark) and (width: 900px) {
     .start__button {
         display: block;
-        background-color: var(--c-fgr);
+        background-color: var(--c-white);
         padding: var(--s-s) var(--s-m);
         border-radius: var(--s);
-        color: var(--c-bgr);
+        color: var(--c-black);
 
     }
 
     .start__button:hover {
         background-color: var(--c-blue);
-        color: var(--c-fgr);
+        color: var(--c-white);
     }
 }
 
@@ -146,13 +147,10 @@ h1 {
 }
 
 .challenge1 {
-    /* grid-template-columns: var(--s) 1fr var(--s);
-    grid-template-rows: var(--s) min-content 1fr var(--s); */
     position: relative;
 
     background-image: url("../assets/img/shower-floor.png");
     background-size: 100%;
-    background-repeat: no-repeat;
 }
 
 .hint1,
@@ -168,7 +166,7 @@ h1 {
 
 .challenge1 .hint1,
 .challenge1 .hint2 {
-    color: var(--c-bgr);
+    color: var(--c-black);
 }
 
 .challenge1 .hint2 {
@@ -181,82 +179,29 @@ h1 {
     color: var(--c-grey);
 }
 
-/* .soap__bar {
-    grid-column: 1/-1;
-    grid-row: 1/-1;
-    justify-self: center;
-    inline-size: 15rem;
-    block-size: 7.5rem;
-    background-color: var(--c-fgr);
-    border-radius: 3.5rem;
-    display: grid;
-    place-items: center;
-    margin-block-start: 15rem;
-} */
-
-/* .soap__bar::after {
-    content: "soap";
-    grid-column: 1/-1;
-    grid-row: 1/-1;
-    display: grid;
-    place-items: center;
-    text-transform: uppercase;
-    font-weight: 900;
-    font-size: var(--f-m);
-    color: var(--c-grey);
-    border-radius: 3.5rem;
-    border: 0.2rem solid var(--c-grey);
-    inline-size: 13rem;
-    block-size: 6rem;
-} */
-
-/* .challenge1 .code__number {
-    grid-column: 1/-1;
-    grid-row: 1/-1;
-    z-index: 10;
-    color: var(--c-green);
-    transition: color 0.5s ease-in;
-} */
-
 .soap {
     max-inline-size: var(--s-xl);
     grid-column: 2;
     grid-row: 1/-1;
     justify-self: center;
     margin-block-start: var(--s-xl);
-    position: absolute;
 }
 
 .code__number {
     display: none;
     font-weight: 900;
-    font-size: var(--f-l);
+    font-size: var(--f-xl);
 }
 
 .water {
-    /* grid-column: 1/-1;
-    grid-row: 1/-1; */
     opacity: 100%;
     align-self: flex-end;
-    /* fill: var(--c-green); */
     position: absolute;
     bottom: -5rem;
     transform: scaleY(80%);
     filter: hue-rotate(-50deg);
     transition: filter 0.5s ease-in, opacity 2s ease-in 1s;
-    /* transition: fill 0.5s ease-in; */
-    /* animation: water 1s ease-in infinite; */
 }
-
-/* @keyframes water {
-    from {
-        left: 0;
-    }
-    
-    to {
-        left: -11%;
-    }
-} */
 
 .nav {
     grid-column: 2/-2;
@@ -286,43 +231,30 @@ h1 {
         display: none;
     }
 
-    /* .soap__bar::after {
-        display: none;
-    } */
-
     .soap {
         display: none;
     }
 
-    /* .soap__bar {
-        background-color: unset;
-    } */
-
     .challenge1 .code__number {
         display: block;
+        grid-column: 2;
+        grid-row: 1/-1;
+        justify-self: center;
+        margin-block-start: calc(var(--s-xl) + var(--s-m));
+        color: var(--c-black);
     }
 }
 
 @media (color-gamut: p3) {
     .water {
         filter: hue-rotate(-20deg);
-        /* fill: var(--c-cyan); */
     }
-
-    /* .challenge1 .code__number {
-        color: var(--c-cyan);
-    } */
 }
 
 @media (color-gamut: rec2020) {
     .water {
         filter: hue-rotate(20deg);
         opacity: 50%;
-        /* fill: var(--c-blue); */
-    }
-
-    .challenge1 .code__number {
-        color: var(--c-green);
     }
 }
 
@@ -347,7 +279,7 @@ h1 {
 .challenge2 .code__number {
     grid-column: 1/-1;
     grid-row: 1/-1;
-    color: var(--c-bgr);
+    color: var(--c-black);
     margin-inline-start: 30rem;
     margin-block-start: 15rem;
 }
@@ -513,7 +445,7 @@ h1 {
         gap: var(--s-s);
         text-transform: unset;
         font-size: var(--f-m);
-        border-bottom: var(--c-fgr) solid 0.05rem;
+        border-bottom: var(--c-white) solid 0.05rem;
         margin-inline: calc(0 - var(--s));
     }
 
@@ -533,7 +465,7 @@ h1 {
     }
 
     .text__message:nth-child(2n) {
-        color: var(--c-bgr);
+        color: var(--c-black);
         display: grid;
         grid-template-columns: 1.5rem auto;
         gap: var(--s-xs);
@@ -541,11 +473,11 @@ h1 {
     }
 
     .text__message:last-child span {
-        color: var(--c-bgr);
+        color: var(--c-black);
     }
 
     .text__message:nth-child(2n) span {
-        background-color: var(--c-fgr);
+        background-color: var(--c-white);
         padding-inline: var(--s-s) var(--s-xs);
     }
 
@@ -692,7 +624,7 @@ input,
 button {
     border: none;
     background: none;
-    color: var(--c-fgr);
+    color: var(--c-white);
     font-size: var(--f);
     font-family: inherit;
 }
@@ -718,7 +650,7 @@ input:valid {
 }
 
 button {
-    border: var(--c-fgr) 0.1rem solid;
+    border: var(--c-white) 0.1rem solid;
     padding: var(--s-xs);
     border-radius: 3.5rem;
 }
