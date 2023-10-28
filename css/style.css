@@ -129,7 +129,7 @@ h1 {
     grid-row: 5;
 }
 
-.start__button{
+.start__button {
     display: none;
 }
 
@@ -655,12 +655,6 @@ h1 {
     .colorblind {
         filter: unset;
     }
-}
-
-@media (min-resolution: 3dppx) {
-    .colorblind {
-        filter: unset;
-    }
 
     .room4 .hint1 {
         display: none;
@@ -711,7 +705,7 @@ h1 {
     grid-row: 1;
 }
 
-.code .hint{
+.code .hint {
     color: var(--c-white);
     padding: unset;
 }
