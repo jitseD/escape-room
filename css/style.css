@@ -82,8 +82,8 @@ a {
     place-items: center;
     grid-template-rows: 1fr repeat(4, max-content) 1fr;
     gap: var(--s);
-    background-image: url(../assets/img/door.png);
-    background-size: cover;
+    background-image: url(../assets/img/paper.png);
+    background-size: 80% 100%;
     background-repeat: no-repeat;
     background-position: center;
 }
