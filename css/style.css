@@ -15,6 +15,13 @@
     --c5: #857c2f;
     --c6: #bca942;
 
+    --cls5: #5cb29d;
+    --cls4: #6ea76c;
+    --cls2: #c4a3cc;
+    --cls1: #b26d8e;
+    --cls6: #c2c88e;
+    --cls3: #5fabcd;
+
     --s-xs: clamp(0.5rem, 0.46rem + 0.1639vw, 0.5625rem);
     --s-s: clamp(0.9375rem, 0.8176rem + 0.4918vw, 1.125rem);
     --s: clamp(1.4375rem, 1.3176rem + 0.4918vw, 1.625rem);
@@ -148,7 +155,6 @@ h1 {
 
 .challenge1 {
     position: relative;
-
     background-image: url("../assets/img/shower-floor.png");
     background-size: 100%;
 }
@@ -158,15 +164,11 @@ h1 {
     grid-column: 2/-1;
     grid-row: 2;
     z-index: 20;
+    color: var(--c-black);
 }
 
 .hint h1 {
     padding-block-end: var(--s);
-}
-
-.challenge1 .hint1,
-.challenge1 .hint2 {
-    color: var(--c-black);
 }
 
 .challenge1 .hint2 {
@@ -176,7 +178,7 @@ h1 {
 .hint>p:last-child {
     margin-block-start: var(--s-xs);
     font-size: var(--f-s);
-    color: var(--c-grey);
+    /* color: var(--c-grey); */
 }
 
 .soap {
@@ -191,6 +193,7 @@ h1 {
     display: none;
     font-weight: 900;
     font-size: var(--f-xl);
+    color: var(--c-black);
 }
 
 .water {
@@ -214,7 +217,16 @@ h1 {
 
 .prev,
 .next {
-    text-decoration: underline;
+    /* text-decoration: underline; */
+    inline-size: 5rem;
+    block-size: 5rem;
+    background-image: url(../assets/img/arrow-key.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.prev {
+    transform: scaleX(-1);
 }
 
 .next {
@@ -241,7 +253,6 @@ h1 {
         grid-row: 1/-1;
         justify-self: center;
         margin-block-start: calc(var(--s-xl) + var(--s-m));
-        color: var(--c-black);
     }
 }
 
@@ -270,6 +281,10 @@ h1 {
 
 .challenge2 {
     position: relative;
+    background-image: url(../assets/img/dark.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+z-index: -10;
 }
 
 .challenge2 .hint2 {
@@ -279,9 +294,63 @@ h1 {
 .challenge2 .code__number {
     grid-column: 1/-1;
     grid-row: 1/-1;
-    color: var(--c-black);
-    margin-inline-start: 30rem;
+    margin-inline-start: 35rem;
     margin-block-start: 15rem;
+    color: #080807;
+}
+
+@keyframes flashlight {
+
+    0%,
+    100% {
+        top: 90%;
+        left: 40%;
+    }
+
+    10% {
+        top: 60%;
+        left: 10%;
+    }
+
+    20% {
+        top: 30%;
+        left: 30%;
+    }
+
+    30% {
+        top: 10%;
+        left: 50%;
+    }
+
+    40% {
+        top: 30%;
+        left: 80%;
+    }
+
+    50% {
+        top: 60%;
+        left: 60%;
+    }
+
+    60% {
+        top: 90%;
+        left: 80%;
+    }
+
+    70% {
+        top: 70%;
+        left: 50%;
+    }
+
+    80% {
+        top: 40%;
+        left: 30%;
+    }
+
+    90% {
+        top: 70%;
+        left: 50%;
+    }
 }
 
 @media (prefers-color-scheme: light) {
@@ -304,68 +373,14 @@ h1 {
         block-size: 15rem;
         background-image: url(../assets/img/flashlight.png);
         background-size: cover;
-        opacity: 80%;
-        border-radius: 50%;
+        filter: blur(0.2rem);
+        opacity: 70%;
+        z-index: -10;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         position: absolute;
-        z-index: -10;
-        animation: flashlight 0.5s ease-in infinite
-    }
-
-    @keyframes flashlight {
-
-        0%,
-        100% {
-            top: 90%;
-            left: 40%;
-        }
-
-        10% {
-            top: 60%;
-            left: 10%;
-        }
-
-        20% {
-            top: 30%;
-            left: 30%;
-        }
-
-        30% {
-            top: 10%;
-            left: 50%;
-        }
-
-        40% {
-            top: 30%;
-            left: 80%;
-        }
-
-        50% {
-            top: 60%;
-            left: 60%;
-        }
-
-        60% {
-            top: 90%;
-            left: 80%;
-        }
-
-        70% {
-            top: 70%;
-            left: 50%;
-        }
-
-        80% {
-            top: 40%;
-            left: 30%;
-        }
-
-        90% {
-            top: 70%;
-            left: 50%;
-        }
+        animation: flashlight 0.5s linear infinite
     }
 }
 
@@ -389,7 +404,7 @@ h1 {
 /* --- challenge 3 --- */
 
 
-.challenge3{
+.challenge3 {
     background-image: url(../assets/img/desk.png);
     background-size: cover;
     background-position: bottom;
@@ -407,11 +422,12 @@ h1 {
     padding: 0rem var(--s-m) var(--s-m) 0rem;
 }
 
-.challenge3 .hint2{
+.challenge3 .hint2 {
     display: none;
 }
 
 @media (width: 375px) and (height: 667px) {
+
     .challenge3 .hint1,
     .iphone {
         display: none;
@@ -500,7 +516,7 @@ h1 {
     .challenge3 .nav {
         display: grid;
         grid-row: 3;
-        padding-block-end: calc(var(--s-m) + var(--s-s));
+        margin-block-end: -2rem;
         padding-inline: 0rem;
     }
 }
@@ -523,17 +539,25 @@ h1 {
 
 /* --- challenge 4 --- */
 
+.challenge4 {
+    background-image: url(../assets/img/eye-practice.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .color__blind {
     inline-size: 20rem;
 }
 
 .colorblind {
-    grid-column: 2;
-    grid-row: 2/4;
-    align-self: flex-end;
-    justify-self: center;
-    max-inline-size: 50vw;
-    max-block-size: 50vh;
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    place-self: center;
+    margin-inline-start: var(--s-s);
+    margin-block-end: var(--s-xl);
+    inline-size: 10rem;
+    block-size: 10rem;
     filter: blur(0.8rem);
     transition: filter 0.5s ease-in;
 }
@@ -548,16 +572,16 @@ h1 {
     }
 }
 
-.c1,
-.c3,
-.c5 {
-    fill: var(--c1);
+.cls1,
+.cls3 {
+    fill: var(--cls1);
 }
 
-.c2,
-.c4,
-.c6 {
-    fill: var(--c2);
+.cls2,
+.cls4,
+.cls5,
+.cls6 {
+    fill: var(--cls2);
 }
 
 @media (min-resolution: 3dppx) {
@@ -575,20 +599,20 @@ h1 {
 }
 
 @media (prefers-contrast: more) {
-    .c3 {
-        fill: var(--c3);
+    .cls3 {
+        fill: var(--cls3);
     }
 
-    .c4 {
-        fill: var(--c4);
+    .cls4 {
+        fill: var(--cls4);
     }
 
-    .c5 {
-        fill: var(--c5);
+    .cls5 {
+        fill: var(--cls5);
     }
 
-    .c6 {
-        fill: var(--c6);
+    .cls6 {
+        fill: var(--cls6);
     }
 
     .challenge4 .nav {
