@@ -144,16 +144,16 @@ h1 {
 }
 
 
-/* --- challenge 1 --- */
+/* --- room 1 --- */
 
-.challenge {
+.room {
     display: grid;
     grid-template-columns: var(--s) 1fr var(--s);
     grid-template-rows: var(--s) min-content 1fr var(--s);
     gap: var(--s);
 }
 
-.challenge1 {
+.room1 {
     position: relative;
     background-image: url("../assets/img/shower-floor.png");
     background-size: 100%;
@@ -171,7 +171,7 @@ h1 {
     padding-block-end: var(--s);
 }
 
-.challenge1 .hint2 {
+.room1 .hint2 {
     display: none;
 }
 
@@ -235,11 +235,11 @@ h1 {
 }
 
 @media (max-height: 27rem) {
-    .challenge1 .hint2 {
+    .room1 .hint2 {
         display: block;
     }
 
-    .challenge1 .hint1 {
+    .room1 .hint1 {
         display: none;
     }
 
@@ -247,7 +247,7 @@ h1 {
         display: none;
     }
 
-    .challenge1 .code__number {
+    .room1 .code__number {
         display: block;
         grid-column: 2;
         grid-row: 1/-1;
@@ -270,16 +270,16 @@ h1 {
 }
 
 @media (max-height: 27rem) and (color-gamut: rec2020) {
-    .challenge1 .nav {
+    .room1 .nav {
         display: grid;
         grid-row: 3;
     }
 }
 
 
-/* --- challenge 2 --- */
+/* --- room 2 --- */
 
-.challenge2 {
+.room2 {
     position: relative;
     background-image: url(../assets/img/dark.png);
     background-size: cover;
@@ -287,11 +287,11 @@ h1 {
 z-index: -10;
 }
 
-.challenge2 .hint2 {
+.room2 .hint2 {
     display: none;
 }
 
-.challenge2 .code__number {
+.room2 .code__number {
     grid-column: 1/-1;
     grid-row: 1/-1;
     margin-inline-start: 35rem;
@@ -354,20 +354,20 @@ z-index: -10;
 }
 
 @media (prefers-color-scheme: light) {
-    .challenge2 .hint1 {
+    .room2 .hint1 {
         display: none;
     }
 
-    .challenge2 .hint2 {
+    .room2 .hint2 {
         display: block;
     }
 
-    .challenge2 .code__number {
+    .room2 .code__number {
         filter: blur(var(--s-s));
         display: block;
     }
 
-    .challenge2::after {
+    .room2::after {
         content: '';
         inline-size: 15rem;
         block-size: 15rem;
@@ -385,26 +385,26 @@ z-index: -10;
 }
 
 @media(prefers-reduced-motion: reduce) {
-    .challenge2::after {
+    .room2::after {
         animation-duration: 3s;
     }
 
-    .challenge2 .code__number {
+    .room2 .code__number {
         filter: unset;
     }
 }
 
 @media (prefers-color-scheme: light) and (prefers-reduced-motion: reduce) {
-    .challenge2 .nav {
+    .room2 .nav {
         display: grid;
         grid-row: 3;
     }
 }
 
-/* --- challenge 3 --- */
+/* --- room 3 --- */
 
 
-.challenge3 {
+.room3 {
     background-image: url(../assets/img/desk.png);
     background-size: cover;
     background-position: bottom;
@@ -422,25 +422,25 @@ z-index: -10;
     padding: 0rem var(--s-m) var(--s-m) 0rem;
 }
 
-.challenge3 .hint2 {
+.room3 .hint2 {
     display: none;
 }
 
 @media (width: 375px) and (height: 667px) {
 
-    .challenge3 .hint1,
+    .room3 .hint1,
     .iphone {
         display: none;
     }
 
-    .challenge3 {
+    .room3 {
         position: relative;
         background-color: rgb(40, 40, 40);
         background-image: url(../assets/img/iphone.png);
         background-size: 100vw 100vh;
     }
 
-    .challenge3 .hint2 {
+    .room3 .hint2 {
         grid-column: 2;
         display: grid;
         gap: var(--s);
@@ -513,7 +513,7 @@ z-index: -10;
         padding-inline: var(--s-xs) var(--s-s);
     }
 
-    .challenge3 .nav {
+    .room3 .nav {
         display: grid;
         grid-row: 3;
         margin-block-end: -2rem;
@@ -522,7 +522,7 @@ z-index: -10;
 }
 
 @media print {
-    .challenge3 .code__number {
+    .room3 .code__number {
         display: block;
         grid-column: 1/-1;
         grid-row: 1/-1;
@@ -530,16 +530,16 @@ z-index: -10;
         font-size: 50rem;
     }
 
-    .challenge3 .hint,
+    .room3 .hint,
     .iphone {
         display: none;
     }
 }
 
 
-/* --- challenge 4 --- */
+/* --- room 4 --- */
 
-.challenge4 {
+.room4 {
     background-image: url(../assets/img/eye-practice.png);
     background-size: cover;
     background-repeat: no-repeat;
@@ -562,7 +562,7 @@ z-index: -10;
     transition: filter 0.5s ease-in;
 }
 
-.challenge4 .hint2 {
+.room4 .hint2 {
     display: none;
 }
 
@@ -589,11 +589,11 @@ z-index: -10;
         filter: unset;
     }
 
-    .challenge4 .hint1 {
+    .room4 .hint1 {
         display: none;
     }
 
-    .challenge4 .hint2 {
+    .room4 .hint2 {
         display: block;
     }
 }
@@ -615,7 +615,7 @@ z-index: -10;
         fill: var(--cls6);
     }
 
-    .challenge4 .nav {
+    .room4 .nav {
         display: grid;
         grid-row: 3;
     }
@@ -628,6 +628,10 @@ z-index: -10;
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     place-items: center;
+    background-image: url(../assets/img/safe.png);
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .form {
@@ -635,6 +639,8 @@ z-index: -10;
     grid-row: 1/-1;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    margin-inline-start: 3.5rem;
+    margin-block-start: -6rem;
     gap: var(--s) var(--s-xs);
 }
 
@@ -649,27 +655,29 @@ button {
     background: none;
     color: var(--c-white);
     font-size: var(--f);
-    font-family: inherit;
+font-family: 'Changa', sans-serif;
+line-height: 0.5;
 }
 
 input {
-    padding: var(--s-xs);
-    border-block-end: var(--c-grey) 0.1rem solid;
+    inline-size: min-content;
+    block-size: 1.5rem;
+    text-align: center;}
+
+input::placeholder{
+    color: var(--c-grey);
 }
 
 input:focus {
     outline: none;
-    border-color: var(--c-blue);
 }
 
 input:invalid {
     color: var(--c-red);
-    border-color: var(--c-red);
 }
 
 input:valid {
     color: var(--c-green);
-    border-color: var(--c-green);
 }
 
 button {
