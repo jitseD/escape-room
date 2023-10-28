@@ -10,8 +10,8 @@
 
     --c-room1: #15709e;
     --c-room2: #928b60;
-    --c-room3: #536955;
-    --c-room4: #b5a4b4;
+    --c-room3: #b5a4b4;
+    --c-room4: #536955;
 
     --cls1: #b26d8e;
     --cls2: #c4a3cc;
@@ -473,10 +473,10 @@ h1 {
 /* --- room 3 --- */
 
 .room3 {
-    background-image: url(../assets/img/desk.png);
+    background-image: url(../assets/img/eye-practice.png);
     background-size: cover;
-    background-position: bottom;
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 .room3 .hint {
@@ -484,6 +484,91 @@ h1 {
 }
 
 .room3 .hint2 {
+    display: none;
+}
+
+.color__blind {
+    inline-size: 20rem;
+}
+
+.colorblind {
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    place-self: center;
+    margin-inline-start: var(--s-s);
+    margin-block-end: var(--s-xl);
+    inline-size: 10rem;
+    block-size: 10rem;
+    filter: blur(0.8rem);
+    transition: filter 0.5s ease-in;
+}
+
+.cls1,
+.cls3 {
+    fill: var(--cls1);
+}
+
+.cls2,
+.cls4,
+.cls5,
+.cls6 {
+    fill: var(--cls2);
+}
+
+@media (min-resolution: 3dppx) {
+    .colorblind {
+        filter: unset;
+    }
+
+    .room3 .hint1 {
+        display: none;
+    }
+
+    .room3 .hint2 {
+        display: block;
+    }
+}
+
+@media (prefers-contrast: more) {
+    .cls3 {
+        fill: var(--cls3);
+    }
+
+    .cls4 {
+        fill: var(--cls4);
+    }
+
+    .cls5 {
+        fill: var(--cls5);
+    }
+
+    .cls6 {
+        fill: var(--cls6);
+    }
+}
+
+@media (min-resolution: 3dppx) and (prefers-contrast: more) {
+    .room3 .nav {
+        display: grid;
+    }
+}
+
+
+
+/* --- room 4 --- */
+
+.room4 {
+    background-image: url(../assets/img/desk.png);
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.room4 .hint {
+    background-color: var(--c-room4);
+}
+
+.room4 .hint2 {
     display: none;
 }
 
@@ -498,19 +583,19 @@ h1 {
 
 @media (width: 375px) and (height: 667px) {
 
-    .room3 .hint1,
+    .room4 .hint1,
     .iphone {
         display: none;
     }
 
-    .room3 {
+    .room4 {
         position: relative;
         background-color: rgb(40, 40, 40);
         background-image: url(../assets/img/iphone.png);
         background-size: 100vw 100vh;
     }
 
-    .room3 .hint2 {
+    .room4 .hint2 {
         background-color: unset;
         justify-self: center;
         display: grid;
@@ -585,13 +670,13 @@ h1 {
         padding-inline: var(--s-xs) var(--s-s);
     }
 
-    .room3 .nav {
+    .room4 .nav {
         display: grid;
     }
 }
 
 @media print {
-    .room3 .code__number {
+    .room4 .code__number {
         display: block;
         grid-column: 1/-1;
         grid-row: 1/-1;
@@ -599,93 +684,9 @@ h1 {
         font-size: 50rem;
     }
 
-    .room3 .hint,
+    .room4 .hint,
     .iphone {
         display: none;
-    }
-}
-
-
-/* --- room 4 --- */
-
-.room4 {
-    background-image: url(../assets/img/eye-practice.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.room4 .hint {
-    background-color: var(--c-room4);
-}
-
-.room4 .hint2 {
-    display: none;
-}
-
-.color__blind {
-    inline-size: 20rem;
-}
-
-.colorblind {
-    grid-column: 1/-1;
-    grid-row: 1/-1;
-    place-self: center;
-    margin-inline-start: var(--s-s);
-    margin-block-end: var(--s-xl);
-    inline-size: 10rem;
-    block-size: 10rem;
-    filter: blur(0.8rem);
-    transition: filter 0.5s ease-in;
-}
-
-.cls1,
-.cls3 {
-    fill: var(--cls1);
-}
-
-.cls2,
-.cls4,
-.cls5,
-.cls6 {
-    fill: var(--cls2);
-}
-
-@media (min-resolution: 3dppx) {
-    .colorblind {
-        filter: unset;
-    }
-
-    .room4 .hint1 {
-        display: none;
-    }
-
-    .room4 .hint2 {
-        display: block;
-    }
-}
-
-@media (prefers-contrast: more) {
-    .cls3 {
-        fill: var(--cls3);
-    }
-
-    .cls4 {
-        fill: var(--cls4);
-    }
-
-    .cls5 {
-        fill: var(--cls5);
-    }
-
-    .cls6 {
-        fill: var(--cls6);
-    }
-}
-
-@media (min-resolution: 3dppx) and (prefers-contrast: more) {
-    .room4 .nav {
-        display: grid;
     }
 }
 
