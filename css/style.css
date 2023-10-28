@@ -4,16 +4,21 @@
     --c-grey: rgb(139, 139, 139);
     --c-dark-red: rgb(146, 11, 11);
     --c-dark-green: rgb(8, 138, 77);
-    --c-light-red:rgb(138, 8, 8);
-    --c-light-green:rgb(10, 196, 109);
+    --c-light-red: rgb(138, 8, 8);
+    --c-light-green: rgb(10, 196, 109);
     --c-blue: rgb(84, 98, 231);
 
-    --cls5: #5cb29d;
-    --cls4: #6ea76c;
-    --cls2: #c4a3cc;
+    --c-room1: #15709e;
+    --c-room2: #928b60;
+    --c-room3: #536955;
+    --c-room4: #b5a4b4;
+
     --cls1: #b26d8e;
-    --cls6: #c2c88e;
-    --cls3: #5fabcd;
+    --cls2: #c4a3cc;
+    --cls3: #4985a1;
+    --cls4: #5a8358;
+    --cls5: #478d7b;
+    --cls6: #989d6e;
 
     --s-xs: clamp(0.5rem, 0.46rem + 0.1639vw, 0.5625rem);
     --s-s: clamp(0.9375rem, 0.8176rem + 0.4918vw, 1.125rem);
@@ -76,7 +81,7 @@ a {
     display: grid;
     place-items: center;
     grid-template-columns: 1.2fr 2fr;
-    grid-template-rows: 1.2fr repeat(4, max-content) 1fr;
+    grid-template-rows: 1.2fr repeat(5, max-content) 1fr;
     gap: var(--s);
     background-image: url(../assets/img/door.png);
     background-size: 200%;
@@ -100,9 +105,12 @@ h1 {
 }
 
 .start p {
-    grid-row: 3;
     text-align: center;
     font-size: var(--f-s);
+}
+
+.instruction {
+    grid-row: 3;
 }
 
 .list {
@@ -117,6 +125,14 @@ h1 {
     color: var(--c-dark-red);
 }
 
+.tip {
+    grid-row: 5;
+}
+
+.start__button{
+    display: none;
+}
+
 
 @media (prefers-color-scheme: light) {
     .start {
@@ -125,16 +141,16 @@ h1 {
     }
 }
 
-@media (prefers-color-scheme: dark) and (color-gamut: srgb) and (width: 900px) {
+@media (prefers-color-scheme: dark) and (color-gamut: srgb) and (width: 900px) and (height: 700px) {
     .start__button {
-        grid-row: 5;
+        grid-row: 6;
         display: grid;
         place-items: center;
         background-image: url(../assets/img/button.png);
-        background-size: contain;
+        background-size: 100% 100%;
         background-repeat: no-repeat;
         background-position: center;
-        inline-size: 20rem;
+        inline-size: 15rem;
         block-size: var(--s-m);
         color: var(--c-black);
         font-weight: 600;
@@ -182,13 +198,17 @@ h1 {
     }
 }
 
+@media (height: 700px) {
+    .list__item:nth-child(4) {
+        color: var(--c-dark-green);
+    }
+}
+
 
 /* --- room 1 --- */
 
 .room {
     display: grid;
-    /* grid-template-columns: var(--s) 1fr var(--s);
-    grid-template-rows: var(--s) min-content 1fr var(--s); */
 }
 
 .room>* {
@@ -202,22 +222,23 @@ h1 {
     background-size: 100%;
 }
 
-.hint1,
-.hint2 {
+.room1 .hint {
+    background-color: var(--c-room1);
+}
+
+.hint {
+    border-radius: 1rem;
     z-index: 20;
     color: var(--c-black);
-    /* background-image: url(../assets/img/paper.png);
-    background-size: contain;
-    background-repeat: no-repeat; */
-    margin-inline-start: var(--s);
-    margin-block-start: var(--s);
-    padding-inline-start: var(--s);
-    padding-block-start: var(--s);
-
+    inline-size: max-content;
+    block-size: max-content;
+    margin: var(--s);
+    padding: var(--s);
 }
 
 .hint h1 {
-    padding-block-end: var(--s);
+    font-size: var(--f-m);
+    padding-block-end: var(--s-s);
 }
 
 .room1 .hint2 {
@@ -329,6 +350,10 @@ h1 {
     background-size: cover;
     background-repeat: no-repeat;
     z-index: -10;
+}
+
+.room2 .hint {
+    background-color: var(--c-room2);
 }
 
 .room2 .hint2 {
@@ -454,19 +479,21 @@ h1 {
     background-repeat: no-repeat;
 }
 
+.room3 .hint {
+    background-color: var(--c-room3);
+}
+
+.room3 .hint2 {
+    display: none;
+}
+
 .iphone {
-    grid-column: 2;
-    grid-row: 1/-1;
     inline-size: 10rem;
     rotate: 15deg;
     align-self: flex-end;
     justify-self: center;
     transform: center;
     padding: 0rem var(--s-m) var(--s-m) 0rem;
-}
-
-.room3 .hint2 {
-    display: none;
 }
 
 @media (width: 375px) and (height: 667px) {
@@ -484,6 +511,7 @@ h1 {
     }
 
     .room3 .hint2 {
+        background-color: unset;
         justify-self: center;
         display: grid;
         gap: var(--s);
@@ -506,7 +534,6 @@ h1 {
         align-items: center;
         gap: var(--s-s);
         text-transform: unset;
-        font-size: var(--f-m);
         color: var(--c-white);
         border-bottom: var(--c-white) solid 0.05rem;
         margin-inline: calc(0 - var(--s));
@@ -535,10 +562,6 @@ h1 {
         align-items: center;
     }
 
-    .text__message:last-child span {
-        color: var(--c-black);
-    }
-
     .text__message:nth-child(2n) span {
         background-color: var(--c-white);
         padding-inline: var(--s-s) var(--s-xs);
@@ -558,6 +581,7 @@ h1 {
 
     .text__message:nth-child(2n+1) span {
         background-color: var(--c-blue);
+        color: var(--c-white);
         padding-inline: var(--s-xs) var(--s-s);
     }
 
@@ -591,6 +615,14 @@ h1 {
     background-position: center;
 }
 
+.room4 .hint {
+    background-color: var(--c-room4);
+}
+
+.room4 .hint2 {
+    display: none;
+}
+
 .color__blind {
     inline-size: 20rem;
 }
@@ -607,16 +639,6 @@ h1 {
     transition: filter 0.5s ease-in;
 }
 
-.room4 .hint2 {
-    display: none;
-}
-
-@media (min-resolution: 3dppx) {
-    .colorblind {
-        filter: unset;
-    }
-}
-
 .cls1,
 .cls3 {
     fill: var(--cls1);
@@ -627,6 +649,12 @@ h1 {
 .cls5,
 .cls6 {
     fill: var(--cls2);
+}
+
+@media (min-resolution: 3dppx) {
+    .colorblind {
+        filter: unset;
+    }
 }
 
 @media (min-resolution: 3dppx) {
@@ -683,18 +711,22 @@ h1 {
     grid-row: 1;
 }
 
+.code .hint{
+    color: var(--c-white);
+    padding: unset;
+}
+
 .form {
     display: grid;
     place-self: center;
     grid-template-columns: repeat(4, 1fr);
-    margin-inline-start: 4rem;
-    margin-block-start: -5rem;
-    row-gap: var(--s);
+    margin-inline-start: 3.5rem;
+    margin-block-start: -9.5rem;
+    gap: var(--s-s);
 }
 
 .form button {
-    grid-column: 1/-1;
-    grid-row: 2;
+    display: none;
 }
 
 input,
@@ -727,14 +759,6 @@ input:invalid {
 
 input:valid {
     color: var(--c-light-green);
-}
-
-form button {
-    padding: var(--s-s);
-    background-image: url(../assets/img/button.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
 .number__pad {
