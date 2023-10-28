@@ -3,9 +3,7 @@
     --c-white: rgb(238, 238, 238);
     --c-grey: rgb(139, 139, 139);
     --c-red: rgb(231, 84, 84);
-    --c-yellow: rgb(231, 187, 84);
-    --c-green: rgb(111, 231, 84);
-    --c-cyan: rgb(84, 231, 187);
+    --c-green: rgb(61, 200, 30);
     --c-blue: rgb(84, 98, 231);
 
     --c1: #f5ab47;
@@ -82,9 +80,12 @@ a {
 .start {
     display: grid;
     place-items: center;
-    grid-template-rows: repeat(5, max-content);
-    gap: var(--s-m);
-    padding-block: var(--s-xl);
+    grid-template-rows: 1fr repeat(4, max-content) 1fr;
+    gap: var(--s);
+    background-image: url(../assets/img/door.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 h1 {
@@ -94,10 +95,15 @@ h1 {
 }
 
 .start .title {
-    grid-row: 1;
+    grid-row: 2;
+}
+
+.start p {
+    grid-row: 3;
 }
 
 .list {
+    grid-row: 4;
     display: flex;
     flex-direction: column;
     gap: var(--s-xs);
@@ -105,6 +111,7 @@ h1 {
 
 .list__item {
     list-style: circle;
+    color: var(--c-red);
 }
 
 
@@ -115,19 +122,36 @@ h1 {
     }
 }
 
-@media (color-gamut: srgb) and (prefers-color-scheme: dark) and (width: 900px) {
+@media (prefers-color-scheme: dark) and (color-gamut: srgb) and (width: 900px) {
     .start__button {
-        display: block;
-        background-color: var(--c-white);
-        padding: var(--s-s) var(--s-m);
-        border-radius: var(--s);
+        grid-row: 5;
+        display: grid;
+        place-items: center;
+        background-image: url(../assets/img/button.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        inline-size: var(--s-xl);
+        block-size: var(--s-m);
         color: var(--c-black);
-
     }
+}
 
-    .start__button:hover {
-        background-color: var(--c-blue);
-        color: var(--c-white);
+@media (prefers-color-scheme: dark) {
+    .list__item:nth-child(1) {
+        color: var(--c-green);
+    }
+}
+
+@media(color-gamut: srgb) {
+    .list__item:nth-child(2) {
+        color: var(--c-green);
+    }
+}
+
+@media (width: 900px) {
+    .list__item:nth-child(3) {
+        color: var(--c-green);
     }
 }
 
@@ -135,11 +159,20 @@ h1 {
     .start__button {
         display: none;
     }
+
+
+    .list__item:nth-child(2) {
+        color: var(--c-red);
+    }
 }
 
 @media (color-gamut: rect2020) {
     .start__button {
         display: none;
+    }
+
+    .list__item:nth-child(2) {
+        color: var(--c-red);
     }
 }
 
@@ -284,7 +317,7 @@ h1 {
     background-image: url(../assets/img/dark.png);
     background-size: cover;
     background-repeat: no-repeat;
-z-index: -10;
+    z-index: -10;
 }
 
 .room2 .hint2 {
@@ -639,9 +672,9 @@ z-index: -10;
     grid-row: 1/-1;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    margin-inline-start: 3.5rem;
-    margin-block-start: -6rem;
-    gap: var(--s) var(--s-xs);
+    margin-inline-start: 4rem;
+    margin-block-start: -5rem;
+    row-gap: var(--s);
 }
 
 .form button {
@@ -655,16 +688,17 @@ button {
     background: none;
     color: var(--c-white);
     font-size: var(--f);
-font-family: 'Changa', sans-serif;
-line-height: 0.5;
+    font-family: 'Changa', sans-serif;
+    line-height: 0.5;
 }
 
 input {
     inline-size: min-content;
     block-size: 1.5rem;
-    text-align: center;}
+    text-align: center;
+}
 
-input::placeholder{
+input::placeholder {
     color: var(--c-grey);
 }
 
@@ -681,9 +715,11 @@ input:valid {
 }
 
 button {
-    border: var(--c-white) 0.1rem solid;
-    padding: var(--s-xs);
-    border-radius: 3.5rem;
+    padding: var(--s-s);
+    background-image: url(../assets/img/button.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .code .nav {
