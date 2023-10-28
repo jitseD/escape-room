@@ -2,16 +2,9 @@
     --c-black: rgb(26, 26, 26);
     --c-white: rgb(238, 238, 238);
     --c-grey: rgb(139, 139, 139);
-    --c-red: rgb(231, 84, 84);
-    --c-green: rgb(61, 200, 30);
+    --c-red: rgb(146, 11, 11);
+    --c-green: rgb(8, 138, 77);
     --c-blue: rgb(84, 98, 231);
-
-    --c1: #f5ab47;
-    --c2: #cc6935;
-    --c3: #31784b;
-    --c4: #7ea285;
-    --c5: #857c2f;
-    --c6: #bca942;
 
     --cls5: #5cb29d;
     --cls4: #6ea76c;
@@ -30,7 +23,7 @@
     --f-s: clamp(0.9375rem, 0.8975rem + 0.1639vw, 1rem);
     --f: clamp(1.125rem, 1.0451rem + 0.3279vw, 1.25rem);
     --f-m: clamp(1.62rem, 1.407rem + 0.8738vw, 1.9531rem);
-    --f-l: clamp(2.3325rem, 1.8726rem + 1.8869vw, 3.0519rem);
+    --f-l: clamp(2.3rem, 1.8rem + 1.8vw, 3rem);
     --f-xl: clamp(4.6656rem, 3.6348rem + 5.1543vw, 7.6294rem);
 }
 
@@ -38,7 +31,7 @@ html {
     box-sizing: border-box;
     background-color: var(--c-black);
     color: var(--c-white);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Changa', sans-serif;
 }
 
 *,
@@ -80,12 +73,18 @@ a {
 .start {
     display: grid;
     place-items: center;
-    grid-template-rows: 1fr repeat(4, max-content) 1fr;
+    grid-template-columns: 1.2fr 2fr;
+    grid-template-rows: 1.2fr repeat(4, max-content) 1fr;
     gap: var(--s);
-    background-image: url(../assets/img/paper.png);
-    background-size: 80% 100%;
+    background-image: url(../assets/img/door.png);
+    background-size: 200%;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: right center;
+    color: var(--c-black);
+}
+
+.start > *{
+    grid-column: 2;
 }
 
 h1 {
@@ -100,6 +99,8 @@ h1 {
 
 .start p {
     grid-row: 3;
+    text-align: center;
+    font-size: var(--f-s);
 }
 
 .list {
@@ -110,7 +111,7 @@ h1 {
 }
 
 .list__item {
-    list-style: circle;
+    list-style: disc;
     color: var(--c-red);
 }
 
@@ -131,9 +132,12 @@ h1 {
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        inline-size: var(--s-xl);
+        inline-size: 20rem;
         block-size: var(--s-m);
         color: var(--c-black);
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: var(--f-m);
     }
 }
 
@@ -250,7 +254,6 @@ h1 {
 
 .prev,
 .next {
-    /* text-decoration: underline; */
     inline-size: 5rem;
     block-size: 5rem;
     background-image: url(../assets/img/arrow-key.png);
