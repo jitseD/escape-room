@@ -2,8 +2,10 @@
     --c-black: rgb(26, 26, 26);
     --c-white: rgb(238, 238, 238);
     --c-grey: rgb(139, 139, 139);
-    --c-red: rgb(146, 11, 11);
-    --c-green: rgb(8, 138, 77);
+    --c-dark-red: rgb(146, 11, 11);
+    --c-dark-green: rgb(8, 138, 77);
+    --c-light-red:rgb(138, 8, 8);
+    --c-light-green:rgb(10, 196, 109);
     --c-blue: rgb(84, 98, 231);
 
     --cls5: #5cb29d;
@@ -83,7 +85,7 @@ a {
     color: var(--c-black);
 }
 
-.start > *{
+.start>* {
     grid-column: 2;
 }
 
@@ -112,7 +114,7 @@ h1 {
 
 .list__item {
     list-style: disc;
-    color: var(--c-red);
+    color: var(--c-dark-red);
 }
 
 
@@ -143,19 +145,13 @@ h1 {
 
 @media (prefers-color-scheme: dark) {
     .list__item:nth-child(1) {
-        color: var(--c-green);
+        color: var(--c-dark-green);
     }
 }
 
 @media(color-gamut: srgb) {
     .list__item:nth-child(2) {
-        color: var(--c-green);
-    }
-}
-
-@media (width: 900px) {
-    .list__item:nth-child(3) {
-        color: var(--c-green);
+        color: var(--c-dark-green);
     }
 }
 
@@ -166,7 +162,7 @@ h1 {
 
 
     .list__item:nth-child(2) {
-        color: var(--c-red);
+        color: var(--c-dark-red);
     }
 }
 
@@ -176,7 +172,13 @@ h1 {
     }
 
     .list__item:nth-child(2) {
-        color: var(--c-red);
+        color: var(--c-dark-red);
+    }
+}
+
+@media (width: 900px) {
+    .list__item:nth-child(3) {
+        color: var(--c-dark-green);
     }
 }
 
@@ -185,9 +187,13 @@ h1 {
 
 .room {
     display: grid;
-    grid-template-columns: var(--s) 1fr var(--s);
-    grid-template-rows: var(--s) min-content 1fr var(--s);
-    gap: var(--s);
+    /* grid-template-columns: var(--s) 1fr var(--s);
+    grid-template-rows: var(--s) min-content 1fr var(--s); */
+}
+
+.room>* {
+    grid-column: 1;
+    grid-row: 1;
 }
 
 .room1 {
@@ -198,10 +204,16 @@ h1 {
 
 .hint1,
 .hint2 {
-    grid-column: 2/-1;
-    grid-row: 2;
     z-index: 20;
     color: var(--c-black);
+    /* background-image: url(../assets/img/paper.png);
+    background-size: contain;
+    background-repeat: no-repeat; */
+    margin-inline-start: var(--s);
+    margin-block-start: var(--s);
+    padding-inline-start: var(--s);
+    padding-block-start: var(--s);
+
 }
 
 .hint h1 {
@@ -215,13 +227,10 @@ h1 {
 .hint>p:last-child {
     margin-block-start: var(--s-xs);
     font-size: var(--f-s);
-    /* color: var(--c-grey); */
 }
 
 .soap {
     max-inline-size: var(--s-xl);
-    grid-column: 2;
-    grid-row: 1/-1;
     justify-self: center;
     margin-block-start: var(--s-xl);
 }
@@ -244,12 +253,14 @@ h1 {
 }
 
 .nav {
-    grid-column: 2/-2;
     display: none;
     grid-template-columns: repeat(2, 1fr);
     inline-size: 100%;
     align-items: flex-end;
+    justify-self: center;
     z-index: 20;
+    padding-inline: var(--s);
+    padding-block-end: var(--s);
 }
 
 .prev,
@@ -285,10 +296,8 @@ h1 {
 
     .room1 .code__number {
         display: block;
-        grid-column: 2;
-        grid-row: 1/-1;
         justify-self: center;
-        margin-block-start: calc(var(--s-xl) + var(--s-m));
+        margin-block-start: calc(var(--s-xl) + var(--s));
     }
 }
 
@@ -308,7 +317,6 @@ h1 {
 @media (max-height: 27rem) and (color-gamut: rec2020) {
     .room1 .nav {
         display: grid;
-        grid-row: 3;
     }
 }
 
@@ -433,12 +441,11 @@ h1 {
 @media (prefers-color-scheme: light) and (prefers-reduced-motion: reduce) {
     .room2 .nav {
         display: grid;
-        grid-row: 3;
     }
 }
 
-/* --- room 3 --- */
 
+/* --- room 3 --- */
 
 .room3 {
     background-image: url(../assets/img/desk.png);
@@ -477,10 +484,14 @@ h1 {
     }
 
     .room3 .hint2 {
-        grid-column: 2;
+        justify-self: center;
         display: grid;
         gap: var(--s);
-        padding-block-start: 4rem;
+        margin: 0rem;
+        padding: 0rem;
+        block-size: max-content;
+        inline-size: 80%;
+        padding-block-start: 5rem;
     }
 
     .text__title::before {
@@ -496,6 +507,7 @@ h1 {
         gap: var(--s-s);
         text-transform: unset;
         font-size: var(--f-m);
+        color: var(--c-white);
         border-bottom: var(--c-white) solid 0.05rem;
         margin-inline: calc(0 - var(--s));
     }
@@ -551,9 +563,6 @@ h1 {
 
     .room3 .nav {
         display: grid;
-        grid-row: 3;
-        margin-block-end: -2rem;
-        padding-inline: 0rem;
     }
 }
 
@@ -650,10 +659,11 @@ h1 {
     .cls6 {
         fill: var(--cls6);
     }
+}
 
+@media (min-resolution: 3dppx) and (prefers-contrast: more) {
     .room4 .nav {
         display: grid;
-        grid-row: 3;
     }
 }
 
@@ -662,18 +672,20 @@ h1 {
 
 .code {
     display: grid;
-    grid-template-rows: repeat(2, 1fr);
-    place-items: center;
     background-image: url(../assets/img/safe.png);
     background-size: 80%;
     background-repeat: no-repeat;
     background-position: center;
 }
 
+.code>* {
+    grid-column: 1;
+    grid-row: 1;
+}
+
 .form {
-    grid-column: 1/-1;
-    grid-row: 1/-1;
     display: grid;
+    place-self: center;
     grid-template-columns: repeat(4, 1fr);
     margin-inline-start: 4rem;
     margin-block-start: -5rem;
@@ -710,14 +722,14 @@ input:focus {
 }
 
 input:invalid {
-    color: var(--c-red);
+    color: var(--c-light-red);
 }
 
 input:valid {
-    color: var(--c-green);
+    color: var(--c-light-green);
 }
 
-button {
+form button {
     padding: var(--s-s);
     background-image: url(../assets/img/button.png);
     background-size: contain;
@@ -725,10 +737,27 @@ button {
     background-position: center;
 }
 
+.number__pad {
+    place-self: center;
+    margin-inline-start: 4rem;
+    margin-block-start: 6.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, min-content);
+    grid-template-rows: repeat(3, min-content);
+    gap: 0.5rem 1.5rem;
+
+    z-index: 20;
+}
+
+.number__pad>* {
+    color: var(--c-black);
+    inline-size: 2rem;
+    block-size: 2.5rem;
+    padding: 0rem;
+}
+
 .code .nav {
-    grid-column: 1;
     padding-inline: calc(var(--s)*2);
-    grid-row: 2;
     display: grid;
     align-self: flex-end;
     padding-block-end: calc(var(--s)*2);
