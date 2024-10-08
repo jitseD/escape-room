@@ -14,6 +14,8 @@ The **Escape Room** project consists of several interactive rooms where users mu
 
 ## The Result
 
-Check out the result and try to escape from my website at [jitsedekeyser.be/devine/escape-room](https://jitsedekeyser.be/devine/escape-room)
+Try to escape from the website at [jitsedekeyser.be/devine/escape-room](https://jitsedekeyser.be/devine/escape-room)
 
 Tip: to adjust more the display settings open the dev tools and select ⫶ > more tools > rendering
+
+Or watch the full end result at [vimeo.com/1017646470](https://vimeo.com/1017646470)
